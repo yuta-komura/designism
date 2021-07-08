@@ -1,8 +1,7 @@
 package net.designism.api;
 
-import net.designism.api.domain.user.service.Impl.AdminUserService;
-import net.designism.api.domain.user.service.Impl.DefaultUserService;
-import net.designism.api.domain.user.service.UserService;
+import net.designism.api.domain.user.UserServiceImpl;
+import net.designism.api.domain.user.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class AutowiredConfig {
 
   @Bean
-  public UserService adminUserService() {
-    return new AdminUserService();
+  public UserService userServiceImpl() {
+    return new UserServiceImpl();
   }
 
 }

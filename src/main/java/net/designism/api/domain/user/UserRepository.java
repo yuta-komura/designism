@@ -1,7 +1,7 @@
-package net.designism.api.domain.user.repository;
+package net.designism.api.domain.user;
 
 import java.util.List;
-import net.designism.api.domain.user.model.User;
+import net.designism.api.infrastructure.repository.entity.User;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
@@ -13,9 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserRepository {
 
   @Select
-  List<User> selectAll();
+  User selectAuthUser(String name, String password);
 
   @Insert
   @Transactional
-  int insert(User reservation);
+  int insert(User user);
+
 }
