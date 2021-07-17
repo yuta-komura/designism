@@ -1,11 +1,11 @@
 package net.designism.api.domain.user;
 
-import java.util.List;
-import net.designism.api.infrastructure.repository.entity.User;
 import org.seasar.doma.Dao;
+import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
+import org.seasar.doma.jdbc.Result;
 import org.springframework.transaction.annotation.Transactional;
 
 @ConfigAutowireable
@@ -13,10 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserRepository {
 
   @Select
-  User selectAuthUser(String name, String password);
+  User selectByAuthKey(Name name, Password password);
 
   @Insert
   @Transactional
-  int insert(User user);
+  Result<User> insert(User user);
+
+  @Delete(sqlFile = true)
+  int deleteByUserId(UserId userId);
 
 }
