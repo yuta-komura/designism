@@ -2,9 +2,11 @@ package net.designism.api.domain.user;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import lombok.EqualsAndHashCode;
 import net.designism.api.core.util.Validator;
 import org.seasar.doma.Domain;
 
+@EqualsAndHashCode
 @Domain(valueType = String.class)
 public class Password {
 

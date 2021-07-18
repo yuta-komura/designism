@@ -3,6 +3,8 @@ package net.designism.api.domain.user;
 
 import org.junit.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class PasswordTest {
 
   @Test
@@ -85,5 +87,16 @@ public class PasswordTest {
   @Test(expected = IllegalArgumentException.class)
   public void 数字のみ() {
     new Password("00000000000000000000000000000000");
+  }
+
+  @Test
+  public void equalsとhashCode() {
+    Password password1 = new Password("dkl2131401xfkwSJ");
+    Password password2 = new Password("dkl2131401xfkwSJ");
+    assertThat(password1.equals(password2)).isTrue();
+
+    int p1HashCode = password1.hashCode();
+    int p2HashCode = password2.hashCode();
+    assertThat(p1HashCode == p2HashCode).isTrue();
   }
 }
