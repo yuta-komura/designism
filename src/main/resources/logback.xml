@@ -1,0 +1,29 @@
+<configuration>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="FILE">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg %n</pattern>
+    </encoder>
+
+    <file>${logDir}${fileName}</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${logDir}${fileName}.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>1</maxHistory>
+    </rollingPolicy>
+  </appender>
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{36}) - %msg %n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <property name="logDir" value="/var/log/designism/"/>
+  <property name="fileName" value="api.log"/>
+
+  <root level="info">
+    <appender-ref ref="FILE"/>
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>
